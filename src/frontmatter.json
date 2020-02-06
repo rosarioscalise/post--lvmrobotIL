@@ -1,0 +1,27 @@
+{
+  "title": "Distill Example",
+  "description": "An example project using Webpack, Babel, and Svelte.",
+  "password": "roboreview",
+  "authors": [
+    {
+      "author": "Rosario Scalise",
+      "authorURL": "https://rosari.ooo/",
+      "affiliation": "University of Washington",
+      "affiliationURL": "https://personalrobotics.cs.washington.edu"
+    }
+  ],
+  "katex": {
+    "delimiters": [
+      {
+        "left": "$",
+        "right": "$",
+        "display": false
+      },
+      {
+        "left": "$$",
+        "right": "$$",
+        "display": true
+      }
+    ]
+  }
+}

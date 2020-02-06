@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <style>
+    <%=require("raw-loader!../static/styles.css") %>
+
+    ul
+    {
+        list-style-type: none;
+    }
+
+    ul.icon
+    {
+        list-style-type: none;
+    }
+
+    ul.icon li
+    {
+        text-indent: 1em;
+    }
+
+    ul.icon li:before
+    {
+        font-family:'Font Awesome 5 Free' ;
+        content: "";
+        float: left;
+        width: 2em;
+    }
+    ul.icon li.minus:before { content: "➖"; }
+    ul.icon li.plus:before { content: "➕"; }
+    ul.icon li.help:before { content: "\f35a"; }
+    ul.icon li.cat:before { content: "\1F431"; }
+    ul.icon li.hand:before { content: "\e805"; }
+  </style>
+</head>
+
+<body>
+  <d-front-matter>
+    <script type="text/json">
+      <%= JSON.stringify(require("./frontmatter.json"), null, 4) %>
+    </script>
+  </d-front-matter>
+
+  <d-title>
+    <h1>Latent Variable Models for Robot Imitation Learning</h1>
+    <p>Exploring the application, limitations, and future promise.</p>
+  </d-title>
+
+  <d-article>
+    <p>Earlier on in 2019, I became interested in applying generative models to imitation learning for robotics tasks. Before diving in too deep on the application, I spent some time studying the fundamentals. In this post I'll get into the results of the basic research and then hint at how this fits into the big picture of running on <code>real</code>.</p>
+
+    <h3>Latent Variable Generative Models</h3>
+    <p>
+    <i>Notation: I will begin with using 'standard notation' from ML literature in this section and then transition towards robotics-specific notation which overloads some symbols.</i>
+    </p>
+
+    <p>
+    Our ultimate goal is to generate datapoints that 'look like' the true data distribution $p^*(\bold{x})$ from which we sample a dataset $D$. Our hope is that $D$ is representative of the qualities in the true data we are most interested in capturing, however in some cases it is difficult to ensure this a priori. 
+    </p>
+    <p>
+	Being that we desire structure in our model that enables generating datapoints given some control over semantically meaningful factors of variation in the data, we choose to model not only $p^*(\bold{x})$, but the joint $p^*(\bold{x},\bold{z})$ where $\bold{z}$ is a latent variable that describes an underlying causal, but unobservable factor. Thinking in terms of Bayesian Networks, the latent variable is a causal ancestor that 'seeds' the model's generative output. 
+    </p>
+	<d-math block="">
+	p(\bold{x}) = \int p(\bold{x},\bold{z}) d\bold{z}
+	</d-math>
+	<p>
+	We can factorize the joint as:
+	</p>
+	<d-math block="">
+	p(\bold{x}) = \int p(\bold{x}|\bold{z})p(\bold{z}) d\bold{z}
+	</d-math>
+    <p>
+    <p>
+    The graphical model, then, has the following structure <d-footnote>If $\bold{z}$ is continuous and distributed according to a Gaussian, another way to think of this process is as an infinite mixture model of Gaussians.</d-footnote>:
+	</p>
+	<figure>
+      <%= require("../static/images/lvm_pgm.svg") %>
+    </figure>
+
+    <p>
+    <b>Sampling: </b>In order to generate new samples, we first sample the prior distribution $\hat{\bold{z}} \sim p(\bold{z})$ and then sample the conditional generative distribution $\hat{\bold{x}} \sim p(\bold{x} | \bold{z})$. Therefore, before we can use our model, we must obtain a good estimate of $p(\bold{x} | \bold{z})$.
+    </p>
+
+    <p>
+    <b>Learning: </b>Latent Variable Models introduce a few snags in the learning process. Rather than try to explain the derivation of the precise model we will use or the learning procedure in detail, I will simply sketch out the logic one would follow to arrive there:
+    </p>
+    <ol>
+        <li> Typically, we use $D$ to obtain a density estimate of $p^*(\bold{x})$ via Maximum Likelihood Learning. This is usually as straightforward as performing <a href=https://en.wikipedia.org/wiki/Stochastic_gradient_descent>SGD</a> to find parameters $\theta$ which maximize $p_\theta(\bold{x})$.
+        <li> However, because we introduced the latent variable $\bold{z}$, we are now maintaining the generative joint distribution $p_\theta(\bold{x},\bold{z})$. In order to perform Maximum Likelihood Learning on the observable data, we must marginalize over $\bold{z}$ : $p_\theta(\bold{x}) = \int p_\theta(\bold{x},\bold{z})d\bold{z}$.
+        <li> The quantity $\int p_\theta(\bold{x},\bold{z})d\bold{z}$ is intractable, so we turn to approximate posterior estimation via variational inference. In essence, we perform 'good enough' Maximum Likelihood Learning by maximizing a lower bound on the likelihood (known as the ELBO or 'Evidence Lower Bound'):
+    <d-math block="">
+        \mathcal{L}_{\theta,\phi}(\bold{x}) = \mathbb{E}_{q_\phi(\bold{z}|\bold{x})}[\log p_\theta(\bold{x},\bold{z}) - \log q_\phi(\bold{z}|\bold{x})] \leq \log p_\theta(\bold{x})
+    </d-math>
+        <d-footnote>
+            The $q_\phi(\bold{z}|\bold{x})$ term is an approximation on the posterior $p_\theta(\bold{z}|\bold{x})$. This isn't the best place to do a deep dive on variational approximation, but I don't want to leave you completely hanging. Definitely check out <d-cite key="kingma2019introduction"></d-cite> for more.
+        </d-footnote>
+    </ol>
+    <p>
+    This brings us to one one particular 'Deep Latent Variable Model' known as the Variational Autoencoder (VAE) that overcomes these hurdles and effectively optimizes the aformentioned lower bound. Regarding an in depth coverage of the VAE (and a much more complete introduction to latent variable models), I highly encourage reading Chapters 1 & 2 of Kingma and Welling <d-cite key="kingma2019introduction"></d-cite>. For the experiments in this article, we will stick solely to the VAE for maintaining and sampling from $p_\theta(\bold{x},\bold{z})$.
+	</p>
+
+	<style>
+      #example-table {
+        overflow-x: scroll;
+      }
+
+      #example-table th {
+        white-space: nowrap;
+      }
+
+      #example-table tbody th {
+        font-weight: initial;
+        border-bottom: 1px solid rgb(242, 242, 242);
+      }
+
+      #example-table tbody tr:last-of-type th {
+        border-bottom: inherit;
+      }
+
+      #example-table td,
+      #example-table thead th {
+        text-align: center;
+      }
+
+      #example-table td {
+        border-color: rgb(242, 242, 242);
+      }
+
+      #example-table td.no {
+        background-color: #f6f6f6;
+      }
+    </style>
+    <h4>Converting to Robotics Notation</h4>
+    <table id="example-table">
+      <thead>
+        <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="no">$\bold{\tau}$</td>
+          <td>Trajectory of States</td>
+		  <td><i>the data</i></td>
+        </tr>
+        <tr>
+          <td class="no">$\bold{x}$</td>
+          <td>Robot State</td>
+        </tr>
+        <tr>
+          <td class="no">$\bold{s}$</td>
+          <td>Context</td>
+		  <td><i>the conditional</i></td>
+        </tr>
+        <tr>
+          <td class="no">$\bold{z}$</td>
+          <td>Latent Variable</td>
+        </tr>
+        <tr>
+          <td class="no">$p^*(\bold{\tau})$</td>
+          <td>True Distribution of Trajectories</td>
+        </tr>
+        <tr>
+          <td class="no">$p_\theta(\bold{\tau})$</td>
+          <td>Marginalized Model of the Trajectory Distribution</td>
+        </tr>
+        <tr>
+          <td class="no">$p_\theta(\bold{\tau},\bold{z})$</td>
+          <td>Model of the Joint Latent-Trajectory Distribution</td>
+        </tr>
+        <tr>
+          <td class="no">$\theta$</td>
+          <td>Generative Model Parameters</td>
+        </tr>
+      </tbody>
+    </table>
+    </p>
+
+    <h4>Why VAEs and not GANs for this article?</h4>
+    <p>
+        <ul>
+        <li>Seemingly more principled approach.
+        <li>Ease of training.
+        <li>Exposes inference model, $p(\bold{z}|\bold{x})$ which we might want to use later.
+        <li>Seems to promote disentanglement (though information-bottleneck GAN variants also seem promising).
+        <li>We are not concerned with reconstructing high-dimensional things like images (which GANs are known to do with less blurring).
+        </ul> 
+    </p>
+
+    <h3>Learning Trajectory Shape</h3>
+    <p>Our first question: Can our model generate 'trajectory-like' outputs? Can we implicitly learn parts of the car's underlying dynamics model (in this case, simply the kinematics) by seeing many examples of trajectories that were generated respecting these constraints?
+    </p>
+    <p>The idea of learning to model the distribution over trajectories...
+    <d-cite key="osa2018algorithmic"></d-cite>
+    </p>
+    <p>A nice aspect of learning trajectories directly is that they are fairly low dimensional in comparison to learning a distribution over image or video data. Rather than attempt to encode system dynamics via changes in images over timesteps (which are high-dimensional representations encoding a lot of information extraneous to our application like spatial relationships, smoothness of geometric shapes, and color/temporal continuties). We leverage our dynamics models used in the MPC to encode all we need to know about the system dynamics through a sufficiently broad range of trajectory shapes. This relatively low dimensionality enables us to learn conditional distributions without paying too high a computational penalty or requiring gigantic datasets.
+    </p>
+    <p>We begin by generating a dataset of trajectories. Before considering context (which includes an encoding of the initial state as well as the surroundings of the robot), we first consider a range of trajectories that simply adhere to the underlying dynamics of the robot. These are generated by running a <a href="https://en.wikipedia.org/wiki/Model_predictive_control">model-predictive controller</a> (MPC) with a simple objective to head straight (or a position along the same lateral goal line). This MPC 'expert' outputs trajectories with a horizon of $T=5$ timesteps. Here are a few overlayed examples:
+	<figure>
+      <%= require("../static/images/D_shape_overlay.svg") %>
+    </figure>
+
+	<p>Formally, the dataset we will first experiment with is:
+	</p>
+    <d-math block="">
+          D_{shape} = \{ \tau^{(i)} \}_{i=1}^{N} \equiv \tau^{(1:N)}
+    </d-math>
+    <d-math block="">
+        \text{ where } \tau_i=[\bold{x}_0,\bold{x}_1,...,\bold{x}_{T-1}] \text{ and } \bold{x}_i = (x_i,y_i,\theta_i) \in \mathbb{R}^3
+    </d-math>
+	<p>Note a few things about these particular trajectories. Each trajectory has:
+	<ul class="icon" >
+		<li class="plus">Evenly-spaced timesteps (signifying constant velocity).</li>
+		<li class="plus">The same pathlength (perhaps implied by above).</li>
+        <li class="plus">A single point of inflection at$t=2$ (if pronounced).</li>
+		<li class="minus">Variation in final lateral goal points.</li>
+	</ul>
+	</p>
+
+	<p>Asking the VAE to learn a generative model $p_\theta(\tau)$ of the underlying distribution $p^*(\tau)$ that $D_{shape}$ is sampled from is surprisingly straightforward. We follow the standard optimization of the ELBO objective<d-cite key="kingma2019introduction"></d-cite> and the result is a reasonable generative model of MPC-like trajectories with some nice qualities.
+	</p>
+
+	<figure>
+      <%= require("../static/images/D_shape_generated_overlay.svg") %>
+    </figure>
+	<figure>
+      	<%= require("../static/images/gaussian.svg") %>
+		<figcaption>
+		The output sweep of our learned generative model as we sample the latent space on $[-2, 2]$ at intervals of $0.3$.
+		</figcaption>
+    </figure>
+	
+
+
+    <p>
+		Something interesting happens here. You might have noticed that our model pulled out the primary factor of variation
+    <d-footnote id="d-footnote-1">
+   		"Factors of variation explain the observed data. In this context, we use the word “factors” simply to refer to separate sources of inﬂuence; the factors are usually not combined by multiplication. Such factors are often not quantities that are directly observed. Instead, they may exist as either unobserved objects or unobserved forces in the physical world that aﬀect observable quantities.They may also exist as constructs in the human mind that provide useful simplifying explanations or inferred causes of the observed data. They can be thought of as concepts or abstractions that help us make sense of the rich variability in the data. When analyzing a speech recording, the factors of variation include the speaker’s age, their sex, their accent and the words they are speaking. When analyzing an image of a car, the factors of variation include the position of the car, its color, and the angle and brightness of the sun."<d-cite key="goodfellow2016deep"></d-cite>
+	</d-footnote>
+from the dataset (which happens to be the lateral goal position the trajectory was approaching when the dataset was generated).
+    </p>
+
+	<p>There are at least three qualities to pay attention to w.r.t. the factor of variation that the latent space captures:</p>
+	<p><b>Consistency:</b> This can be viewed as smoothness in the latent space. Sampling two adjacent points in the latent space <d-math>z \sim \mathcal{N}(0, \bold{I})</d-math> (for example $z=0.2$ and $z=0.3$) result in outputs that only differ from each other slightly along the factor of variation. Another way of thinking about consistency is a smoothing 'filter' over imperfect examples. Notice in the initial dataset $D_{shape}$ there are 'center' trajectories that wiggle slightly. These noisy examples are smoothed out of the learned model and conveniently absent from the generative model $p_\theta(\tau)$.
+	<p><b>Extrapolation:</b> We see some evidence of extrapolation when comparing the coverage of $D_{shape}$ with the coverage of $p_\theta(\tau)$. As we push the latent to sample areas with less density, the willingness of the model to output data that is similar to, but outside of the extremes along the captured factor of variation increases.
+	<p><b>Interpolation:</b> In the absence of coverage within the dataset, it is desirable for our model to fill in the gaps between modes in the data. Since coverage in $D_{shape}$ is mostly complete, it is not evident whether our model can interpolate well. We will explore this more below. This is equivalent to how expressive the output is as we traverse from one point to another point sufficiently far away in the latent space. {diagram}
+	</p>
+	
+	<h4>Experiments on Extrapolation</h4>
+	<p>
+	To explore how well our model can extrapolate, we reduced the coverage of our dataset to only trajectories that navigate towards an $x$-position interval on the right. We refer to this new dataset as $D_{right}$. Here are the extremes with a handful of intermediate trajectories:
+	</p>
+
+	<figure>
+      <%= require("../static/images/D_right_overlay.svg") %>
+    </figure>
+	
+	We then train a new generative model $p_\theta(\tau)$ on $D_{right}$:
+
+	<figure>
+      <%= require("../static/images/D_right_overlay_gen_fan.svg") %>
+    </figure>
+
+	<figure>
+      <%= require("../static/images/D_right_overlay_gen_extremes-3and3_withD_right.svg") %>
+    </figure>
+
+
+
+
+	<p>
+    Although we see that $p_\theta(\tau)$ is able to output valid trajectories when sampling at the edges of the posterior distribution $p_\phi(\bold{z}|\tau)$ (e.g. $-3$ and $3$), these trajectories do not extrapolate as much as we were hoping. When sampling any further than 3 standard deviations from the mean (where 99.7% of the density is), the generated trajectories completely lose the learned 'shape' quality which is to be expected.
+	</p>
+
+	<figure>
+    	<%= require("../static/images/D_right_gen_-3.2.svg") %>
+		<figcaption>
+            Sampling $p_\theta(\tau,\bold{z})$ at $z=3.2$ produces a trajectory that is beginning to lose its shape (and therefore kinematic feasibility).
+		</figcaption>
+    </figure>
+
+
+	<h4>Experiments on Interpolation</h4>
+
+	<p>
+	Next, we investigate our model's ability to interpolate. We create a new dataset from two previous datasets: $D_{lr} = D_{left} \cup D_{right}$. This dataset explicitly leaves a gap in the expert trajectories shown along the FoV where the $D_{left}$ and $D_{right}$ trajectories become two modes in the new dataset:
+	</p>
+	<figure>
+      <%= require("../static/images/D_rightleft_overlay.svg") %>
+	  <figcaption>
+          <center>$D_{lr}$ contains 2 modes of grouped demonstrations. Note there are no demonstrations that pass through the center.</center>
+	  </figcaption>
+    </figure>
+
+	<figure>
+      <%= require("../static/images/D_rightleft_overlay_gen_interpolate.svg") %>
+    </figure>
+
+	<figure>
+      <%= require("../static/images/FoV0.svg") %>
+    </figure>
+
+    <p>
+    In summary we see that by providing a dataset with two distinct modes, we are able to not only generate samples from both of these modes, but also interpolate between the two. This is a powerful trait to be aware of, but it is not without its caveats. 
+    </p>
+
+    <p>
+    What if our set of examples looks like this? What if there is a large obstacle in the center of two diverging 'modes' in our set of demonstrations?
+    </p>
+	<figure>
+      <%= require("../static/images/obstacle_training.svg") %>
+    </figure>
+    <p>
+    Classic supervised learning methods for imitation learning such as behavior cloning <d-cite key="pomerleau1989alvinn"></d-cite> would need to be trained on only a subset of the data and potentially only learn one of the solutions around the obstacle:
+    </p> 
+
+	<figure>
+      <%= require("../static/images/obstacle_bc.svg") %>
+    </figure>
+
+    <p>
+    Let's try training with our current VAE. Here's what we observe when aligning via the typical forward KL (<a href=https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>Kullback–Leibler</a>) divergence:
+    <d-math block="">
+        KL_{forward} = \mathbb{E}_{p^*(\tau,\bold{z})}\ln p^*(\tau,\bold{z}) - \mathbb{E}_{p^*(\tau,\bold{z})}\ln q_{\phi}(\tau,\bold{z}) 
+    </d-math>
+    <d-footnote id=d-footnote-2>Incidentally, minimizing forward KL (or M-projection) is actually equivalent to Maximum Likelihood Estimation! <d-cite key="bishop2006pattern"></d-cite></d-footnote>
+    </p>
+	<figure>
+      <%= require("../static/images/obstacle_KLforward.svg") %>
+    </figure>
+    <p>
+    The model ends up interpolating between the two primary modes (<i>mode-averaging</i>). This can sometimes be to our advantage, but not in this scenario.
+
+    What we would prefer to see looks something more like the following:
+    </p>
+	<figure>
+      <%= require("../static/images/obstacle_KLreverse.svg") %>
+    </figure>
+	<p>
+    Here, the model does not interpolate, but instead doubles down on the two primary modes (<i>mode-seeking</i>). This can be achieved (though in practice it is much trickier) through the use of the reverse KL divergence when optimizing our objective during training:
+    </p>
+    <d-math block="">
+        KL_{reverse} = \mathbb{E}_{q_{\phi}(\tau,\bold{z})}\ln p^*(\tau,\bold{z}) - \mathbb{E}_{q_{\phi}(\tau,\bold{z})}\ln q_{\phi}(\tau,\bold{z}) 
+    </d-math>
+
+	<b>TODO: Density ratios of factor modes vs. learned densities</b> 
+	
+    <h3>A Second Factor of Variation in the Data</h3>
+    <p>We saw earlier that a 1-dimensional latent space was sufficient to capture the full variation in the data, $D_{lr}$. What happens if we introduce a second factor of variation: <i>speed</i>? In our visualization, speed can be interpreted as the distance between waypoints in the trajectory (this assumes the sampling rate is constant). We construct a new dataset which now includes both <i>final lateral position</i> and <i>speed</i>. This new dataset is referred to as $D_{lr,speed} = D_{lr} \times D_{1.0,3.0}$ where the cross product implies we expand $D_{lr}$ on the speed axis from its current speed of $1.0$ m/s to another mode at $3.0$ m/s ( yes, this robot is <i>haulin'</i> ). Here are a few examples:
+    </p>
+
+	<figure>
+      <%= require("../static/images/train_3.0_1.0.svg") %>
+	  <figcaption>
+          <center>$D_{lr,speed}$ contains 4 modes of grouped demonstrations. An opaque cluster of left, 1.0 speed demonstrations and a lighter-opacity cluster of 3.0 speed demonstrations. The other two modes are the mirror on the right. Note there are still no demonstrations that pass through the center.</center>
+	  </figcaption>
+    </figure>
+    
+    <p>
+    If we train our model to have two latent variables, we see that the latent variables roughly pull our both factors of variation! Here is a demonstration of how the model handles fixing the first latent, $z1=1.0$ and varing $z2$ on $[0.0,1.0]$:
+    </p>
+	<figure>
+      <%= require("../static/images/z1_1_z2_0to1.svg") %>
+	  <figcaption>
+          <center>Scaling $z2$ while keeping $z1$ fixed. Both end points are shown opaque while interpolated trajectory waypoints are shown in lighter-opacity.</center>
+	  </figcaption>
+    </figure>
+    <p>
+    Remarkably, scaling $z2$ preserves the shape and scales the size proportional to the change in $z2$! We can revist our Factor of Variation diagram and add an additional axis for speed. The orange line is a rough representation of what our previous experiment showed in the latent space.
+    </p>
+
+	<figure>
+      <%= require("../static/images/FoV1.svg") %>
+    </figure>
+   
+    <p><b>Compositionality:</b> Another important concept emerges! We are able to compose two roughly interpretable settings in our latent space into a new observed behavior. 
+    </p>
+
+	<figure>
+      <%= require("../static/images/FoV2.svg") %>
+    </figure>
+
+	<figure>
+      <%= require("../static/images/latent_traversal.svg") %>
+    </figure>
+
+	<figure>
+      <%= require("../static/images/FoV12_traversal_large.svg") %>
+	  <figcaption>
+          <center>This figure shows an overlay of all trajectories generated while varying both $z1$ and $z2$. It becomes more legible if you focus on the red arrows take starting from the center. Match these with the traversal in the latent space shown in the diagram directly above.</center>
+	  </figcaption>
+    </figure>
+    <p>
+    In the diagram shown above you'll notice a couple things. First, it's pretty amazing that there is a close correspondense to the output we see in trajectory space to the 'spatial' path taken in the latent space. Second, you might be thinking...hmm some of those paths seem a little crooked. Unfortunately we have 'imperfect' <i> disentanglement </i> to blame for that. Lucky for us, there are a few ways to enforce better disentanglement which I will get to shortly. 
+    
+    <p><b>Interpolated Composition</b> What's even more exciting is that it seems possible to compose <b> interpolated </b> areas of our latent space! This opens up a rich world of possibilities in terms of both expressiveness and data efficiency. What this seems to suggest is that in certain cases, it is only necessary to provide demonstrations from the end-points of the factor of variation you are interested in learning a latent representation for. Check this out:
+    </p>
+	<figure>
+      <%= require("../static/images/latent_compositional_interpolation.svg") %>
+    </figure>
+    
+	<figure>
+      <%= require("../static/images/composition_interpolation.svg") %>
+	  <figcaption>
+          <center>These two trajectoires (dark red) and (orange) correspond to two points in the latent space that happen to lie in the region of composition from two 'interpolated' regions along each factor of variation! </center>
+	  </figcaption>
+    </figure>
+    Remember, in our dataset, we never saw any straight trajectories at all. It seems the model is not only able to generate straight trajectories at latent values sampled in between the left and right modes, but it is also able to generate straight trajectories at any speed between the $1.0$ and $3.0$ modes as well!
+
+    <h4>TODO: A note on Disentanglement</h4>
+
+    <h3>Avoiding Collisions by Introducing Context</h3>
+	<p>With one minor architectural modification, we can model the conditional density $p^*(\tau | s)$ which gives us the ability to encode context $s$. This increases the burden on our VAE where it now must learn not only the dynamics of the robot, but also the geometric constraints of the world. In traditional planning, we typically rely on a collision checker to do this.
+	</p>
+    
+    <h3>Running on real</h3>
+    <p>First, we must acknowledge that we already have in hand specialized methods for perception and planning in this particular application. </p>
+    <p>For perception, we can perform SLAM and localize our robot within the map. We can use this map along with our curent LIDAR stream and a partical filter to obtain very accurate contexts. </p>
+    <p>We also have our MPC, and should in the least use this as a safety module which has a guarenteed output. This means it verifies that the vehicle does not collide with obstacles nor violate its dynamics constraints (risking the motors self-destructing or worse).</p>
+    <p>Finally, we have to consider the fact that in <code>real</code>, we usually have a high level goal in mind (which we might care about more than our <i>style</i> of reaching the goal). I will explore this in much greater detail in the next post, but for now, I'll leave you with this image as a teaser. </p>
+
+	<figure>
+      <%= require("../static/images/real.svg") %>
+    </figure>
+
+
+
+
+  <d-appendix>
+    <h3>FutureArticles</h3>
+    <p>Keep an eye out for an updated, interactive version of this article!</p>
+	<p>
+	Similar experimentation with flow and autoregressive models. Workflow. Experiments run in Habitat/Gibson. Experiments on real.
+	</p>
+    <h3>Acknowledgments</h3>
+    <p>
+	Thanks for the support, collaboration, encouragement, and guidance from the following 💎s: Matthew Schmittle, Sanjiban Choudhury, Arsalan Mousavian, Siddhartha Srinivasa, and Dieter Fox.  
+    </p>
+
+    <p>
+      <b>Writing & Diagrams:</b> The text was initially [and so far only] drafted by Rosario Scalise [though I would welcome any collaboration!].
+    </p>
+
+    <d-footnote-list></d-footnote-list>
+    <d-citation-list></d-citation-list>
+  </d-appendix>
+
+  <!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
+  <d-bibliography src="bibliography.bib"></d-bibliography>
+
+</body>

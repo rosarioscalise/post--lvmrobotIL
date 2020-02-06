@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (http://matplotlib.org/) -->
+<svg height="216pt" version="1.1" viewBox="0 0 432 216" width="432pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 216 
+L 432 216 
+L 432 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g clip-path="url(#pdf3f8fb111)">
+    <image height="216" id="imagee304979d02" transform="scale(1 -1)translate(0 -216)" width="324" x="54" xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAUQAAADYCAYAAACTOZpKAAAABHNCSVQICAgIfAhkiAAAAoxJREFUeJzt1DEBACAMwDDAv+fx1AMciYJe3TMzC4B1XgcA/MIQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCBBDBIghAsQQAWKIADFEgBgiQAwRIIYIEEMEiCECxBABYogAMUSAGCJADBEghggQQwSIIQLEEAFiiAAxRIAYIkAMESCGCJALEykFrLDtfcYAAAAASUVORK5CYII=" y="-0"/>
+   </g>
+   <g id="patch_2">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_3">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292393 165.141868 
+L 230.520026 170.206199 
+L 229.558651 169.714103 
+L 227.590269 173.559604 
+L 226.628894 173.067508 
+L 228.597276 169.222008 
+L 227.635901 168.729912 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_4">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.657879 133.446821 
+L 258.352696 138.021767 
+L 257.591386 137.255734 
+L 254.527254 140.300975 
+L 253.765943 139.534942 
+L 256.830075 136.489701 
+L 256.068765 135.723668 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_5">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.407552 103.104752 
+L 289.102432 107.679729 
+L 288.341111 106.913707 
+L 285.277021 109.95899 
+L 284.5157 109.192968 
+L 287.57979 106.147684 
+L 286.81847 105.381662 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_6">
+    <path clip-path="url(#pdf3f8fb111)" d="M 316.115058 68.007928 
+L 315.342901 73.072291 
+L 314.381505 72.580236 
+L 312.413283 76.425818 
+L 311.451887 75.933762 
+L 313.42011 72.08818 
+L 312.458714 71.596124 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_7">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_8">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292354 165.14186 
+L 230.519987 170.206191 
+L 229.558612 169.714095 
+L 227.590231 173.559596 
+L 226.628855 173.0675 
+L 228.597237 169.222 
+L 227.635862 168.729905 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_9">
+    <path clip-path="url(#pdf3f8fb111)" d="M 262.44219 135.478744 
+L 259.447111 139.634885 
+L 258.815555 138.758793 
+L 255.311188 141.285018 
+L 254.679632 140.408926 
+L 258.183999 137.882701 
+L 257.552442 137.00661 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_10">
+    <path clip-path="url(#pdf3f8fb111)" d="M 303.686343 123.267276 
+L 299.126509 125.602209 
+L 298.963511 124.53458 
+L 294.692995 125.186571 
+L 294.529997 124.118942 
+L 298.800514 123.466951 
+L 298.637516 122.399322 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_11">
+    <path clip-path="url(#pdf3f8fb111)" d="M 346.055417 116.48601 
+L 341.918915 119.508153 
+L 341.590253 118.479376 
+L 337.475146 119.794023 
+L 337.146484 118.765247 
+L 341.261591 117.4506 
+L 340.932929 116.421823 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_12">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_13">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292353 165.141845 
+L 230.519986 170.206177 
+L 229.558611 169.714081 
+L 227.59023 173.559582 
+L 226.628854 173.067486 
+L 228.597236 169.221986 
+L 227.635861 168.72989 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_14">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.882068 133.476609 
+L 258.576885 138.051555 
+L 257.815575 137.285522 
+L 254.751443 140.330763 
+L 253.990132 139.56473 
+L 257.054264 136.519489 
+L 256.292954 135.753456 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_15">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.809008 102.623318 
+L 289.503889 107.198296 
+L 288.742568 106.432274 
+L 285.678478 109.477558 
+L 284.917157 108.711535 
+L 287.981247 105.666251 
+L 287.219926 104.900229 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_16">
+    <path clip-path="url(#pdf3f8fb111)" d="M 316.773163 67.468772 
+L 316.001007 72.533136 
+L 315.039611 72.04108 
+L 313.071389 75.886663 
+L 312.109994 75.394607 
+L 314.078216 71.549025 
+L 313.11682 71.056969 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_17">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_18">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292448 165.141916 
+L 230.520081 170.206248 
+L 229.558706 169.714152 
+L 227.590325 173.559653 
+L 226.628949 173.067557 
+L 228.597331 169.222057 
+L 227.635956 168.729961 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_19">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.887672 133.472155 
+L 258.582489 138.047102 
+L 257.821179 137.281069 
+L 254.757047 140.32631 
+L 253.995736 139.560277 
+L 257.059868 136.515036 
+L 256.298558 135.749003 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_20">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.834244 102.604178 
+L 289.529125 107.179156 
+L 288.767804 106.413134 
+L 285.703715 109.458418 
+L 284.942394 108.692396 
+L 288.006483 105.647112 
+L 287.245162 104.881089 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_21">
+    <path clip-path="url(#pdf3f8fb111)" d="M 319.852044 69.642323 
+L 318.289162 74.520991 
+L 317.41762 73.88317 
+L 314.866336 77.369335 
+L 313.994795 76.731514 
+L 316.546079 73.245348 
+L 315.674537 72.607527 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_22">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_23">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292364 165.141752 
+L 230.519997 170.206083 
+L 229.558622 169.713988 
+L 227.59024 173.559488 
+L 226.628865 173.067393 
+L 228.597247 169.221893 
+L 227.635872 168.729797 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_24">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.650878 133.602822 
+L 258.345695 138.177768 
+L 257.584385 137.411735 
+L 254.520252 140.456976 
+L 253.758942 139.690943 
+L 256.823074 136.645702 
+L 256.061764 135.879669 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_25">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.377689 103.203248 
+L 289.072569 107.778226 
+L 288.311248 107.012204 
+L 285.247158 110.057487 
+L 284.485837 109.291465 
+L 287.549928 106.246181 
+L 286.788607 105.480159 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_26">
+    <path clip-path="url(#pdf3f8fb111)" d="M 316.088973 68.076046 
+L 315.316816 73.140409 
+L 314.35542 72.648353 
+L 312.387198 76.493935 
+L 311.425802 76.001879 
+L 313.394025 72.156297 
+L 312.432629 71.664242 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_27">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_28">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292393 165.141801 
+L 230.520026 170.206132 
+L 229.558651 169.714037 
+L 227.590269 173.559537 
+L 226.628894 173.067442 
+L 228.597276 169.221941 
+L 227.635901 168.729846 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_29">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.759736 133.574439 
+L 258.454553 138.149385 
+L 257.693243 137.383352 
+L 254.629111 140.428593 
+L 253.8678 139.66256 
+L 256.931933 136.617319 
+L 256.170622 135.851286 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_30">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.244651 103.229504 
+L 288.939531 107.804482 
+L 288.17821 107.038459 
+L 285.11412 110.083743 
+L 284.352799 109.31772 
+L 287.416889 106.272437 
+L 286.655568 105.506414 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_31">
+    <path clip-path="url(#pdf3f8fb111)" d="M 316.054021 68.260227 
+L 315.281864 73.324591 
+L 314.320469 72.832535 
+L 312.352246 76.678117 
+L 311.390851 76.186061 
+L 313.359073 72.340479 
+L 312.397678 71.848424 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_32">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_33">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.29244 165.141862 
+L 230.520073 170.206193 
+L 229.558698 169.714098 
+L 227.590317 173.559598 
+L 226.628941 173.067503 
+L 228.597323 169.222002 
+L 227.635948 168.729907 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_34">
+    <path clip-path="url(#pdf3f8fb111)" d="M 261.623758 134.469956 
+L 258.967586 138.850453 
+L 258.268565 138.027185 
+L 254.975495 140.82327 
+L 254.276473 140.000002 
+L 257.569544 137.203918 
+L 256.870522 136.38065 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_35">
+    <path clip-path="url(#pdf3f8fb111)" d="M 298.714 112.410639 
+L 295.110783 116.052181 
+L 294.622689 115.088768 
+L 290.769038 117.041144 
+L 290.280944 116.077732 
+L 294.134595 114.125355 
+L 293.646501 113.161943 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_36">
+    <path clip-path="url(#pdf3f8fb111)" d="M 335.074097 89.655472 
+L 332.426928 94.041415 
+L 331.726217 93.219585 
+L 328.438897 96.022428 
+L 327.738186 95.200598 
+L 331.025507 92.397755 
+L 330.324796 91.575925 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_37">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_38">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292472 165.141883 
+L 230.520106 170.206214 
+L 229.55873 169.714119 
+L 227.590349 173.559619 
+L 226.628974 173.067524 
+L 228.597355 169.222023 
+L 227.63598 168.729928 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_39">
+    <path clip-path="url(#pdf3f8fb111)" d="M 259.815931 132.650997 
+L 257.875879 137.392325 
+L 257.05695 136.688226 
+L 254.240554 139.963942 
+L 253.421626 139.259843 
+L 256.238022 135.984127 
+L 255.419093 135.280028 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_40">
+    <path clip-path="url(#pdf3f8fb111)" d="M 282.103468 95.697464 
+L 281.320979 100.760241 
+L 280.36059 100.266225 
+L 278.384525 104.107784 
+L 277.424136 103.613767 
+L 279.4002 99.772209 
+L 278.439811 99.278193 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_41">
+    <path clip-path="url(#pdf3f8fb111)" d="M 295.171983 54.569439 
+L 295.590092 59.675238 
+L 294.541058 59.418473 
+L 293.513999 63.614608 
+L 292.464966 63.357843 
+L 293.492025 59.161708 
+L 292.442991 58.904943 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_42">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_43">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292412 165.14178 
+L 230.520045 170.206111 
+L 229.55867 169.714015 
+L 227.590288 173.559516 
+L 226.628913 173.06742 
+L 228.597295 169.22192 
+L 227.63592 168.729824 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_44">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.933134 133.443267 
+L 258.627951 138.018213 
+L 257.866641 137.25218 
+L 254.802509 140.297421 
+L 254.041199 139.531388 
+L 257.105331 136.486147 
+L 256.34402 135.720114 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_45">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.79677 102.548568 
+L 289.491651 107.123546 
+L 288.73033 106.357524 
+L 285.66624 109.402808 
+L 284.904919 108.636786 
+L 287.969009 105.591501 
+L 287.207688 104.825479 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_46">
+    <path clip-path="url(#pdf3f8fb111)" d="M 319.860011 69.55782 
+L 318.297129 74.436488 
+L 317.425587 73.798667 
+L 314.874303 77.284832 
+L 314.002762 76.647011 
+L 316.554046 73.160846 
+L 315.682504 72.523025 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_47">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_48">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292437 165.141864 
+L 230.520071 170.206196 
+L 229.558696 169.7141 
+L 227.590314 173.559601 
+L 226.628939 173.067505 
+L 228.59732 169.222005 
+L 227.635945 168.729909 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_49">
+    <path clip-path="url(#pdf3f8fb111)" d="M 260.733664 133.59279 
+L 258.428481 138.167736 
+L 257.66717 137.401703 
+L 254.603038 140.446944 
+L 253.841728 139.680911 
+L 256.90586 136.63567 
+L 256.14455 135.869637 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_50">
+    <path clip-path="url(#pdf3f8fb111)" d="M 291.305507 103.142423 
+L 289.000387 107.7174 
+L 288.239066 106.951378 
+L 285.174976 109.996661 
+L 284.413655 109.230639 
+L 287.477745 106.185355 
+L 286.716424 105.419333 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_51">
+    <path clip-path="url(#pdf3f8fb111)" d="M 316.088815 68.19162 
+L 315.316658 73.255983 
+L 314.355262 72.763927 
+L 312.387039 76.609509 
+L 311.425644 76.117453 
+L 313.393867 72.271871 
+L 312.432471 71.779815 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_52">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_53">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292392 165.141861 
+L 230.520025 170.206192 
+L 229.55865 169.714096 
+L 227.590268 173.559597 
+L 226.628893 173.067501 
+L 228.597275 169.222001 
+L 227.6359 168.729906 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_54">
+    <path clip-path="url(#pdf3f8fb111)" d="M 259.815869 132.650946 
+L 257.875817 137.392275 
+L 257.056888 136.688176 
+L 254.240492 139.963892 
+L 253.421563 139.259793 
+L 256.237959 135.984077 
+L 255.41903 135.279978 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_55">
+    <path clip-path="url(#pdf3f8fb111)" d="M 282.103434 95.697424 
+L 281.320946 100.760201 
+L 280.360556 100.266185 
+L 278.384492 104.107743 
+L 277.424102 103.613727 
+L 279.400167 99.772169 
+L 278.439777 99.278153 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_56">
+    <path clip-path="url(#pdf3f8fb111)" d="M 295.171921 54.569461 
+L 295.59003 59.67526 
+L 294.540997 59.418495 
+L 293.513938 63.614631 
+L 292.464904 63.357866 
+L 293.491963 59.161731 
+L 292.442929 58.904966 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_57">
+    <path clip-path="url(#pdf3f8fb111)" d="M 217.079966 205.74 
+L 218.699984 210.599994 
+L 217.619984 210.599998 
+L 217.62 214.919998 
+L 216.54 214.920002 
+L 216.539984 210.600002 
+L 215.459984 210.600006 
+z
+" style="fill:#008000;stroke:#008000;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_58">
+    <path clip-path="url(#pdf3f8fb111)" d="M 231.292407 165.141823 
+L 230.52004 170.206154 
+L 229.558665 169.714058 
+L 227.590284 173.559559 
+L 226.628908 173.067463 
+L 228.59729 169.221963 
+L 227.635915 168.729868 
+z
+" style="fill:#00ff00;stroke:#00ff00;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_59">
+    <path clip-path="url(#pdf3f8fb111)" d="M 259.815893 132.650872 
+L 257.875841 137.392201 
+L 257.056912 136.688102 
+L 254.240516 139.963818 
+L 253.421587 139.259719 
+L 256.237983 135.984003 
+L 255.419055 135.279904 
+z
+" style="fill:#ffd700;stroke:#ffd700;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_60">
+    <path clip-path="url(#pdf3f8fb111)" d="M 282.103394 95.697358 
+L 281.320906 100.760135 
+L 280.360517 100.266119 
+L 278.384453 104.107678 
+L 277.424063 103.613662 
+L 279.400127 99.772103 
+L 278.439737 99.278087 
+z
+" style="fill:#ffa500;stroke:#ffa500;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_61">
+    <path clip-path="url(#pdf3f8fb111)" d="M 295.172029 54.56929 
+L 295.590138 59.675089 
+L 294.541105 59.418324 
+L 293.514046 63.614459 
+L 292.465012 63.357695 
+L 293.492071 59.16156 
+L 292.443037 58.904795 
+z
+" style="fill:#ff0000;stroke:#ff0000;stroke-linejoin:miter;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdf3f8fb111">
+   <rect height="216" width="324" x="54" y="0"/>
+  </clipPath>
+ </defs>
+</svg>
